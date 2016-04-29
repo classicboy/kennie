@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <%= render partial: "shared/head" %>
+</head>
+<body>
+<%= render partial: "shared/header" %>
+<%= render partial: "shared/banner" %>
+
+<div class="kode-content padding-tb-50">
+  <div class="container">
+    <div class="row">
+
+      <%= render partial: "shared/sidebar" %>
+      <%= yield %>
+
+    </div>
+  </div>
+</div>
+
+<%= render partial: "shared/footer" %>
+<%= render partial:  "shared/copyright" %>
+</body>
+</html>

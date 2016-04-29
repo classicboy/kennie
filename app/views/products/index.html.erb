@@ -1,0 +1,87 @@
+<% @title="Home" %>
+<body>
+
+<div class="col-md-9">
+  <%= paginate(@products) %>
+  <br>
+
+  <div class="row">
+    <% @products.each do |product| %>
+        <div class="col-md-4 col-sm-6">
+          <div class="books-listing-3">
+            <div class="kode-thumb">
+              <%= link_to (image_tag product.image), product_path(id: product.id) %>
+            </div>
+            <div class="kode-text">
+              <p class="price"><%= product.price %><span style="text-decoration: none; color:orange">VND</span></p>
+              <h3><%= link_to truncate(product.name, length: 18), product_path(id: product.id) %></h3>
+              <div class="kode-caption">
+                <p><%= truncate(product.about, length: 200) %></p>
+
+                <%= form_tag add_to_collection_path, remote: true, id: "form-add-to-collection" do %>
+                    <%= hidden_field_tag :product_id, product.id %>
+                    <% if current_user %>
+                        <a class="btn-book-like <%= 'active' if current_user.collection.products.include?(product) %>">
+                          <i class="fa fa-heart"></i></a>
+                        <a class="" data-toggle="modal" data-target="#<%= product.id %>"><i class="fa fa-cart-plus"></i></a>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div id="<%= product.id %>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Order Detail</h4>
+                </div>
+                <%= form_tag products_show_order_path do %>
+                    <div class="modal-body">
+                      <%= product.name %>
+                      <%= number_field_tag :quantity, nil, min: 1, placeholder: 'Số lượng', :class => 'form-control' %>
+                      <%= hidden_field_tag :product_id, product.id %>
+                      <% if user_signed_in? %>
+                          <%= hidden_field_tag :user_id, current_user.id %>
+                      <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <%= submit_tag 'Order', :class => 'btn btn-default' %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <br>
+  <%= paginate(@products) %>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(".btn-book-like").click(function () {
+    $(this).parent().submit();
+    $(this).toggleClass('active');
+  })
+
+  $('.test').click(function () {
+    alert('Xin chao')
+  })
+
+  $(document).ready(function () {
+    (function () {
+      "use strict";
+      if (window.location && window.location.hash) {
+        if (window.location.hash === '#_=_') {
+          window.location.hash = '';
+          history.pushState('', document.title, window.location.pathname); // nice and clean
+        }
+      }
+    }());
+  });
+</script>
+</body>
+</html>

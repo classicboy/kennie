@@ -1,0 +1,106 @@
+<body xmlns="http://www.w3.org/1999/html">
+<!--CONTENT START-->
+<!--TOP AUTHERS START-->
+<div class="col-md-9">
+  <div class="lib-book-detail">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="kode-thumb">
+          <%= image_tag @product.image %>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="kode-text">
+          <h1><%= @product.name %></h1>
+          <div class="product-review">
+            <div class="rating">
+              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div>
+          </div>
+          <div class="product-price">
+            <h4><%= @product.price %> VND</h4>
+          </div>
+          <div class="book-text">
+            <p><%= @product.about %></p>
+          </div>
+          <a href="#" class="add-to-cart">Add To Cart</a>
+          <a class="add-to-cart <%= "like-btn-active" if (current_user && (current_user.collection.products.include? @product)) %> "
+             id="js-btn-add-to-wishlist" product-id="<%= @product.id %>">
+            Add To Wishlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-review-tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <h1>Bình luận</h1>
+    </ul>
+    <div class="tab-content">
+      <div class="kode-comments">
+        <% if @product.reviews == [] %>
+            <p>Chưa có bình luận nào</p>
+        <% else %>
+            <ul>
+              <% @product.reviews.each do |review| %>
+                  <li>
+                    <div class="kode-thumb">
+                      <%= image_tag review.user.avatar.url %>
+                    </div>
+                    <div class="kode-text">
+                      <h4><%= review.user.email %></h4>
+                      <p><%= review.text %></p>
+                    </div>
+                  </li>
+              <% end %>
+            </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% if user_signed_in? %>
+    <div class="col-md-9">
+      <%= form_tag products_review_path, remote: true do %>
+          <div class="">
+            <%= text_field_tag :text, nil, placeholder: 'Viết bình luận', :class => 'form-control' %>
+            <%= hidden_field_tag :user_id, current_user.id %>
+            <%= hidden_field_tag :product_id, @product.id %>
+          </div>
+          <br>
+          <div class="col-md-offset-10" id="submit-review">
+            <%= submit_tag 'Bình luận', :class => 'btn btn-default' %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
+
+<!--CONTENT END-->
+<script type="text/javascript" charset="utf-8">
+  $("#js-btn-add-to-wishlist").click(function () {
+    $.ajax({
+      url: "//" + location.host + "/collection",
+      method: "POST",
+      data: {
+        book_id: $(this).attr('book-id')
+      },
+      dataType: "json",
+      success: function (data) {
+        console.log('success');
+        return $("#js-btn-add-to-wishlist").toggleClass('like-btn-active');
+      },
+      error: function (jqXHR, textStatus) {
+        return alert("Request failed: " + textStatus);
+      }
+    });
+  });
+
+  $('#submit-review').click(function () {
+    location.reload();
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<div class="col-md-9">
+  <div class="row">
+
+    <% current_user.collection.products.each do |product| %>
+        <div class="col-md-4 col-sm-6">
+          <div class="books-listing-3">
+            <div class="kode-thumb">
+              <%= link_to (image_tag product.image), product_path(id: product.id) %>
+            </div>
+
+            <div class="kode-text">
+              <p class="price"><%= product.price %><span style="text-decoration: none; color:orange">VND</span></p>
+              <h3><%= link_to truncate(product.name, length: 18), product_path(id: product.id) %></h3>
+              <div class="kode-caption">
+                <p><%= truncate(product.about, length: 200) %></p>
+
+                <%= form_tag add_to_collection_path, remote: true, id: "form-add-to-collection" do %>
+                    <%= hidden_field_tag :product_id, product.id %>
+                    <% if current_user %>
+                        <a class="btn-book-like <%= 'active' if current_user.collection.products.include?(product) %>">
+                          <i class="fa fa-heart"></i></a>
+                        <a><i class="fa fa-cart-plus"></i></a>
+                        <a><i class="fa fa-link"></i></a>
+                    <% end %>
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+  </div>
+</div>

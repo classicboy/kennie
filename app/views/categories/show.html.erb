@@ -1,0 +1,34 @@
+<body>
+<!--CONTENT START-->
+
+<div class="col-md-9">
+  <div class="row">
+    <!--PRODUCT GRID START-->
+
+    <% @category.products.each do |product| %>
+        <div class="col-md-4 col-sm-6">
+          <div class="books-listing-3">
+            <div class="kode-thumb">
+              <%= link_to (image_tag product.image), product_path(id: product.id) %>
+            </div>
+
+            <div class="kode-text">
+              <p class="price"><%= product.price %><span style="text-decoration: none; color:red">VND</span></p>
+              <h3><%= link_to truncate(product.name, length: 18), product_path(id: product.id) %></h3>
+              <div class="kode-caption">
+                <p><%= product.about %></p>
+                <a href="#"><i class="fa fa-heart"></i></a>
+                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+    <!--PRODUCT GRID END-->
+  </div>
+</div>
+<!--CONTENT END-->
+</body>
+</html>

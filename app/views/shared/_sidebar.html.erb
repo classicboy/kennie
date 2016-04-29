@@ -1,0 +1,111 @@
+ <div class="col-md-3 sidebar">
+    <div class="widget widget-search">
+      <h2>Search</h2>
+      <%= form_tag search_product_path do %>
+          <div class="input-container">
+            <%= text_field_tag :query, params[:query], class: "form-control", id: "product_search", autocomplete: "off", placeholder: 'Search Product' %>
+            <button type="submit" class="fa fa-search"></button>
+          </div>
+      <% end %>
+    </div>
+    <!--CATEGORY WIDGET START-->
+    <div class="widget widget-categories">
+      <h2>Categories</h2>
+      <ul>
+        <% @categories.each do |category| %>
+            <li><%= link_to category.name, category_path(id: category.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <!--CATEGORY WIDGET END-->
+    <div class="widget widget-new-arrival">
+      <h2>New Arrival</h2>
+      <ul>
+        <% @new_arrivals.each do |product| %>
+            <li>
+              <div class="new-arrival">
+                <div class="kode-thumb">
+                  <%= link_to product_path(product) do %>
+                      <%= image_tag product.image %>
+                  <% end %>
+                </div>
+                <div class="kode-text">
+                  <h3><%= link_to product.name, product_path(product) %></h3>
+                </div>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="widget widget-new-arrival">
+      <h2>Best Sellers</h2>
+      <ul class="bxslider">
+        <% @best_sellers.shuffle.each_slice(3).each do |products| %>
+            <li>
+              <% products.each do |product| %>
+                  <div class="new-arrival">
+                    <div class="kode-thumb">
+                      <%= link_to (image_tag product.image), product_path(product) %>
+                    </div>
+                    <div class="kode-text">
+                      <h3><%= link_to product.name, product_path(product) %></h3>
+                      <p><%= product.price %> VND</p>
+                    </div>
+                  </div>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <script type="text/javascript" charset="utf-8">
+    $("#product_search").typeahead({
+      name: "product",
+      hint: null,
+      highlight: null,
+      limit: 10,
+      remote: "/products/auto_complete?query=%QUERY"
+    });
+  </script>
+
+  <style>
+    .widget-search .input-container button{
+      position:absolute;
+      right:1px;
+      left:auto;
+      top:1px;
+      height:42px;
+      font-size:14px;
+      color:grey;
+      background-color:#f6f7f8;
+    }
+    .tt-hint {
+      display: none;
+    }
+
+    .twitter-typeahead {
+      width: 100%;
+    }
+
+    #book_search {
+      background-color: #fff !important;
+      width: 100%;
+      color: #2b2b2b;
+      border-radius: 0px;
+    }
+
+    .tt-dropdown-menu {
+      background-color: #ffffff;
+      padding: 15px;
+      border-bottom: 0 none;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+      width: 100%;
+    }
+
+    .tt-suggestion p {
+      padding: 8px 0px;
+      margin-bottom: 2px;
+      /*border-bottom: 1px solid #333333;*/
+    }
+  </style>
