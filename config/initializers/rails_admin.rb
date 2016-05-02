@@ -3,8 +3,13 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
+  # RailsAdmin.config do |config|
+  #   config.authorize_with do |controller|
+  #     unless current_user && current_user.role == 'admin'
+  #       flash[:error] = "You are not an admin"
+  #       redirect_to '/'
+  #     end
+  #   end
   # end
   # config.current_user_method(&:current_user)
 

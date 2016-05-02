@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
 
 
   def get_categories
+Rails.logger.debug "Test"
+Rails.logger.debug "Param: "
     @categories = Category.all
+Rails.logger.debug "Category : #{@categories.inspect}"
   end
 
   def new_arrivals
