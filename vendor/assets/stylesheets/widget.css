@@ -261,7 +261,7 @@ aside .widget h2:before, .sidebar .widget h2:before{
 }
 .widget-archive ul li a:hover{
 	color:#fff;
-	padding:8px 10px;
+	padding:8px 10px;a
 }
 .widget-archive ul li:before{
 	content:"\f105";
@@ -285,7 +285,7 @@ aside .widget h2:before, .sidebar .widget h2:before{
 }
 .widget-recentpost ul{
 	float:left;
-	width:100#;
+	width:100%;
 	margin:0px;
 	padding:0px;
 	list-style:none;
@@ -399,7 +399,7 @@ footer .widget-categories ul li:before{
 }
 .widget-social-network ul li:hover i{
 	padding:28px 0px;
-	
+
 }
 .widget-social-network ul li span{
 	float:left;
@@ -580,7 +580,7 @@ footer .widget-categories ul li:before{
 	transform:scale(0);
 	-moz-transform:scale(0);
 	-webkit-transform:scale(0)
-	
+
 }
 .widget-blog ul li:hover .kode-thumb a:before{
 	transform:scale(1);
@@ -655,7 +655,7 @@ footer .widget-categories ul li:before{
 	transform:scale(0);
 	-moz-transform:scale(0);
 	-webkit-transform:scale(0)
-	
+
 }
 .widget-flickr ul li:hover:before{
 	transform:scale(1);
@@ -704,7 +704,7 @@ footer .widget-categories ul li:before{
 	border-radius:0px;
 	height:41px;
 	background-color:#fff;
-	
+
 	padding:6px 10px;
 }
 footer .widget-newletter input[type="text"]{
@@ -790,7 +790,7 @@ footer .widget-newletter button:hover{
 }
 .widget-latest-post ul li .kode-text{
 	padding:0px 0px 0px 75px;
-	
+
 }
 .widget-latest-post h4{
 	font-size:12px;
@@ -849,7 +849,7 @@ footer .widget-newletter button:hover{
 ===========================================
 */
 .widget-latest-news{
-	
+
 }
 .widget-latest-news ul{
 	list-style:none;
@@ -877,7 +877,7 @@ footer .widget-newletter button:hover{
 	padding:0px 0px 0px 70px;
 }
 .widget-latest-news .kode-text p{
-	margin:0px;	
+	margin:0px;
 }
 /*
 ===========================================
@@ -977,7 +977,7 @@ footer .widget-newletter button:hover{
 	float:left;
 	width:100%;
 	position:relative;
-	
+
 }
 .widget-new-arrival .new-arrival{
 	float:left;
@@ -1044,7 +1044,7 @@ footer .widget-newletter button:hover{
 .widget-new-arrival .bx-wrapper .bx-controls-direction a.bx-prev{
 	left:auto;
 	right:40px;
-	
+
 }
 .widget-new-arrival .bx-wrapper .bx-controls-direction a:hover{
 	box-shadow:0px 0px 0px 0px rgba(0,0,0,0.3), 0px 2px 2px 0px rgba(0,0,0,0.2) inset;
@@ -1125,7 +1125,7 @@ footer .widget-newletter button:hover{
 }
 
 @-webkit-keyframes spin {
-	0%   { 
+	0%   {
 		-webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
 		-ms-transform: rotate(0deg);  /* IE 9 */
 		transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
@@ -1137,7 +1137,7 @@ footer .widget-newletter button:hover{
 	}
 }
 @keyframes spin {
-	0%   { 
+	0%   {
 		-webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
 		-ms-transform: rotate(0deg);  /* IE 9 */
 		transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
@@ -1175,7 +1175,7 @@ footer .widget-newletter button:hover{
 		-ms-transform: translateX(-100%);  /* IE 9 */
 			transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
 
-	-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+	-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 			transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 
@@ -1184,13 +1184,13 @@ footer .widget-newletter button:hover{
 		-ms-transform: translateX(100%);  /* IE 9 */
 			transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
 
--webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 	transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 
 .loaded #loader {
 	opacity: 0;
-	-webkit-transition: all 0.3s ease-out;  
+	-webkit-transition: all 0.3s ease-out;
 			transition: all 0.3s ease-out;
 }
 .loaded #loader-wrapper {
@@ -1200,7 +1200,7 @@ footer .widget-newletter button:hover{
 		-ms-transform: translateY(-100%);  /* IE 9 */
 			transform: translateY(-100%);  /* Firefox 16+, IE 10+, Opera */
 
-	-webkit-transition: all 0.3s 1s ease-out;  
+	-webkit-transition: all 0.3s 1s ease-out;
 			transition: all 0.3s 1s ease-out;
 }
 
@@ -1324,8 +1324,8 @@ footer .widget-newletter button:hover{
 }
 
 input[type="search"] { /* reset normalize */
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box;	
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .kode_search_box-input:focus,
@@ -1345,10 +1345,10 @@ input[type="search"] { /* reset normalize */
 	padding: 20px 30px;
 	transition:all 0.3s ease-in-out;
 }
-.kode_search_box-submit 
+.kode_search_box-submit
 
 .kode_search_box.open .kode_search_box-submit {
-	
+
 }
 
 .kode_search_box-close {
